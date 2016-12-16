@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>图片队列加载</title>
+<style type="text/css">
+img{
+	padding:0;
+	border:none;
+	margin:0;
+	float:left;
+}
+body{
+	background-color:#ffffff;
+	width:100%;
+	margin:0;
+}
+.ml-guide-img-init{
+	opacity:0;
+	transition:opacity 1.5s;
+	-moz-transition:opacity 1.5s;
+	-wbkit-transition:opacity 1.5s;
+	-o-transition:opacity 1.5s;
+}
+</style>
+</head>
+<body>
+<div class="ml-guide-wrap">
+	<img class="ml-guide-img-init" width="100%"/>
+	<img class="ml-guide-img-init" width="100%"/>
+	<img class="ml-guide-img-init" width="100%"/>
+	<img class="ml-guide-img-init" width="100%"/>
+	<img class="ml-guide-img-init" width="100%"/>
+	<img class="ml-guide-img-init" width="100%"/>
+</div>
+<script type="text/javascript">	
+//window.onload=function(){
+//	var fetchImgSrc=function(){
+//		for(var i=0,imgsLen=2;i<imgsLen;i++){
+////			if(imgs[i].offsetTop<window.innerHeight&&imgs[i].src==''){
+//			if(imgs[i].src==''){
+//				imgs[i].src='img/guide-'+(i+1)+'.jpg';
+//				imgs[i].style.opacity='1';
+//			}	
+//		}
+//	}
+
+	var touch=function(event){
+		var event=event||window.event;
+		
+		switch(event.type){
+			case 'touchstart':
+				break;
+			case 'touchmove':
+				event.preventDefault();
+//				for(var i=0,imgsLen=imgs.length;i<imgsLen;i++){
+//					if(imgs[i].offsetTop<window.innerHeight&&imgs[i].src==''){
+//						imgs[i].src='img/guide-'+(i+1)+'.jpg';
+//						imgs[i].style.opacity='1';
+//					}	
+//				}
+				
+				break;
+			case 'touchend':
+				break;
+		}
+	}
+	
+	document.addEventListener('touchstart',touch,false);
+	document.addEventListener('touchmove',touch,false);
+	document.addEventListener('touchend',touch,false);
+	
+	var imgsWeightArr=[640,640,640,640,640,640];
+	var imgsHeightArr=[393,713,762,791,738,666];
+	var 
+	
+	var imgs=document.getElementsByClassName('ml-guide-img-init');
+	for(var i=0,imgsLen=imgs.length;i<imgsLen;i++){
+		if(imgs[i].src==''){
+			var imgObj=imgs[i];
+			imgObj.onload=function(imgObj){
+				if(imgObj.offsetTop<window.innerHeight){
+					imgObj.src='img/guide-'+(i+1)+'.jpg';
+					imgObj.style.opacity='1';
+				}
+			};
+		}
+		
+	}
+	
+//	fetchImgSrc();
+//}
+</script>
+</body>
+</html>
